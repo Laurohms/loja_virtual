@@ -1,7 +1,9 @@
 package com.ls.loja_virtual.models;
 
+import com.ls.loja_virtual.enums.TipoEndereco;
 import jakarta.persistence.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -9,6 +11,8 @@ import java.util.Objects;
 @Table(name = "endereco")
 @SequenceGenerator(name = "seq_endereco", sequenceName = "seq_endereco", allocationSize = 1, initialValue = 1)
 public class Endereco implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_endereco")
     private Long id;
@@ -19,6 +23,10 @@ public class Endereco implements Serializable {
     private String bairro;
     private String uf;
     private String cidade;
+
+
+    @Enumerated(EnumType.STRING)
+    private TipoEndereco tipoEndereco;
 
     @ManyToOne(targetEntity = Pessoa.class)
     @JoinColumn(
@@ -101,6 +109,15 @@ public class Endereco implements Serializable {
 
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
+    }
+
+
+    public TipoEndereco getTipoEndereco() {
+        return tipoEndereco;
+    }
+
+    public void setTipoEndereco(TipoEndereco tipoEndereco) {
+        this.tipoEndereco = tipoEndereco;
     }
 
     @Override
