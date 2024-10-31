@@ -17,13 +17,13 @@ public class ImagemProduto implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_imagem_produto")
     private Long id;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "text", nullable = false)
     private String imagemOriginal;
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "text", nullable = false)
     private String imagemMiniatura;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
-            name = "produto_id",
+            name = "produto_id", nullable = false,
             foreignKey = @ForeignKey(
                     value = ConstraintMode.CONSTRAINT,
                     name = "produto_fk"

@@ -13,18 +13,32 @@ import java.util.Objects;
 public class Endereco implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_endereco")
     private Long id;
+
+    @Column(nullable = false)
     private String ruaLogra;
+
+    @Column(nullable = false)
     private String cep;
+
+    @Column(nullable = false)
     private String numero;
+
     private String complemento;
+
+    @Column(nullable = false)
     private String bairro;
+
+    @Column(nullable = false)
     private String uf;
+
+    @Column(nullable = false)
     private String cidade;
 
-
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private TipoEndereco tipoEndereco;
 

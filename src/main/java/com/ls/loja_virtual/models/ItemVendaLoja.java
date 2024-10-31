@@ -17,11 +17,12 @@ public class ItemVendaLoja implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_item_venda_loja")
     private Long id;
 
+    @Column(nullable = false)
     private Double quantidade;
 
     @ManyToOne
     @JoinColumn(
-            name = "produto_id",
+            name = "produto_id", nullable = false,
             foreignKey = @ForeignKey(
                     value = ConstraintMode.CONSTRAINT,
                     name = "produto_fk"
@@ -30,7 +31,7 @@ public class ItemVendaLoja implements Serializable {
 
     @ManyToOne
     @JoinColumn(
-            name = "venda_compra_loja_virtual_id",
+            name = "venda_compra_loja_virtual_id", nullable = false,
             foreignKey = @ForeignKey(
                     value = ConstraintMode.CONSTRAINT,
                     name = "venda_compra_loja_virtual_fk"
